@@ -1,34 +1,26 @@
 #!/usr/bin/env bash
 set -e
 
-# Arch Linux Install Script (alis) installs unattended, automated
-# and customized Arch Linux system.
-# Copyright (C) 2018 picodotdev
+# Arch Linux Install Script (alis)
+# Copyright (C) 2019 aramcap (https://github.com/aramcap/alis)
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 rm -f alis.conf
 rm -f alis.sh
-rm -f alis-asciinema.sh
-rm -f alis-reboot.sh
+wget https://raw.githubusercontent.com/aramcap/alis/master/alis.conf
+wget https://raw.githubusercontent.com/aramcap/alis/master/alis.sh
 
-rm -f alis-recovery.conf
-rm -f alis-recovery.sh
-rm -f alis-recovery-asciinema.sh
-rm -f alis-recovery-reboot.sh
-
-wget https://raw.githubusercontent.com/picodotdev/alis/master/alis.conf
-wget https://raw.githubusercontent.com/picodotdev/alis/master/alis.sh
-wget https://raw.githubusercontent.com/picodotdev/alis/master/alis-asciinema.sh
-wget https://raw.githubusercontent.com/picodotdev/alis/master/alis-reboot.sh
-
-wget https://raw.githubusercontent.com/picodotdev/alis/master/alis-recovery.conf
-wget https://raw.githubusercontent.com/picodotdev/alis/master/alis-recovery.sh
-wget https://raw.githubusercontent.com/picodotdev/alis/master/alis-recovery-asciinema.sh
-wget https://raw.githubusercontent.com/picodotdev/alis/master/alis-recovery-reboot.sh
-
-chmod +x alis.sh
-chmod +x alis-asciinema.sh
-chmod +x alis-reboot.sh
-
-chmod +x alis-recovery.sh
-chmod +x alis-recovery-asciinema.sh
-chmod +x alis-recovery-reboot.sh
+vim alis.conf
+bash alis.sh
