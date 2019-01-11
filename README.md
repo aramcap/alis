@@ -32,15 +32,22 @@ For new features, improvements or bugs (in real or virtual hardware) fill an iss
 * GRUB, rEFInd, systemd-boot bootloaders
 * Save installation log in a file
 
-### Basic installation
+### Installation
+
+Start the system with Arch Linux installation media and execute this commands:
 
 ```bash
-# Start the system with Arch Linux installation media
-
 loadkeys [keymap]
 
-curl https://raw.githubusercontent.com/aramcap/alis/master/download.sh | bash
+wget https://raw.githubusercontent.com/aramcap/alis/master/download.sh
+
+bash download.sh
 ```
+
+In ViM editor you can customize your installation. When you save and exit, the install will start immediately.
+
+The install log is save in same directory that installer, but when the computer will be rebooted the log file will moved to `/var/log/alis.log`.
+
 
 ### Arch Linux Installation Media
 
