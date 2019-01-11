@@ -1,6 +1,6 @@
 # ALIS (Arch Linux Install Script)
 
-## Installs unattended, automated and customized Arch Linux system.
+## Install unattended, automated and customized Arch Linux system.
 
 This repository is forked from picodotdev/alis with certains changes. You can read this changes on [CHANGES](https://github.com/aramcap/alis/blob/master/CHANGES) file. Thanks to Picotodev for your work!
 
@@ -9,8 +9,6 @@ This a simple bash script for an easy and fast way of installing Arch Linux, fol
 Please, don't ask for support for this script in Arch Linux forums, first read the [Arch Linux wiki](https://wiki.archlinux.org), the [Installation Guide](https://wiki.archlinux.org/index.php/Installation_guide) and the [General Recomendations](https://wiki.archlinux.org/index.php/General_recommendations), later compare the those commands with the commands of this script.
 
 For new features, improvements or bugs (in real or virtual hardware) fill an issue in GitHub or make a pull request.
-
-**Warning! This script deletes all partitions of the persistent storage**
 
 ### Features
 
