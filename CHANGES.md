@@ -1,4 +1,11 @@
-# v0.1 (master branch)
+# v0.1.1 (master branch)
+
+- Virtualbox now has option in config file (because `lspci` can block computer)
+- Package `dialog` has installed for `wifi-menu`
+- Deepin desktop has installed by individual packages
+- Solved bug when write `vconsole.conf` file
+
+# v0.1
 
 - Deleted Asciinema
 - Added global vars

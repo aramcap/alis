@@ -279,9 +279,9 @@ function facts() {
         CPU_INTEL="true"
     fi
 
-    if [ -n "$(lspci | grep -i virtualbox)" ]; then
-        VIRTUALBOX="true"
-    fi
+    # if [ -n "$(lspci | grep -i virtualbox)" ]; then
+    #     VIRTUALBOX="true"
+    # fi
 }
 
 function check_facts() {
@@ -518,7 +518,16 @@ function configuration() {
     echo -e "$LANG\n$LANGUAGE" > /mnt/etc/locale.conf
 
     # set vconsole configs
-    echo -e "$KEYMAP\n$FONT\n$FONT_MAP" > /mnt/etc/vconsole.conf
+    if [ -n "$KEYMAP" ]; then
+        echo -e "KEYMAP=$KEYMAP" >> /mnt/etc/vconsole.conf
+    fi
+    if [ -n "$FONT" ]; then
+        echo -e "FONT=$FONT" >> /mnt/etc/vconsole.conf
+    fi
+    if [ -n "$FONT_MAP" ]; then
+        echo -e "FONT_MAP=$FONT_MAP" >> /mnt/etc/vconsole.conf
+    fi
+    
 
     # set hostname
     echo $HOSTNAME > /mnt/etc/hostname
@@ -1041,7 +1050,7 @@ function desktop_environment_lxde() {
 }
 
 function desktop_environment_deepin() {
-    pacman_install "deepin deepin-calculator deepin-community-wallpapers deepin-editor deepin-screen-recorder deepin-screenshot deepin-terminal"
+    pacman_install "deepin-account-faces deepin-anything deepin-anything-arch deepin-api deepin-calendar deepin-control-center deepin-daemon deepin-desktop-base deepin-desktop-schemas deepin-dock deepin-file-manager deepin-grub2-themes deepin-gtk-theme deepin-image-viewer deepin-launcher deepin-manual deepin-menu deepin-network-utils deepin-polkit-agent-ext-gnomekeyring deepin-qt5dxcb-plugin deepin-qt5integration deepin-session-ui deepin-shortcut-viewer deepin-sound-theme deepin-system-monitor deepin-turbo deepin-wallpapers startdde deepin-boot-maker deepin-calculator deepin-clone deepin-community-wallpapers deepin-draw deepin-editor deepin-movie deepin-music deepin-picker deepin-screen-recorder deepin-screenshot deepin-terminal deepin-voice-recorder"
     arch-chroot /mnt sed -i 's/#greeter-session.*/greeter-session=lightdm-deepin-greeter/' /etc/lightdm/lightdm.conf
     arch-chroot /mnt systemctl enable lightdm.service
 }
@@ -1054,6 +1063,8 @@ function packages() {
     if [ "$FILE_SYSTEM_TYPE" == "btrfs" ]; then
         pacman_install "btrfs-progs"
     fi
+
+    pacman_install dialog
 
     if [ -n "$PACKAGES_PACMAN" ]; then
         pacman_install "$PACKAGES_PACMAN"
@@ -1087,7 +1098,8 @@ function packages_aur() {
 function terminate() {
     if [ "$LOG" == "true" ]; then
         mkdir -p /mnt/var/log
-        cp "alis.log" "/mnt/var/log/alis.log"
+        cp "alis.log" "/mnt/root/alis.log"
+        cp "alis.conf" "/mnt/root/alis.conf"
     fi
     umount_partitions
 }
