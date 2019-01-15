@@ -14,7 +14,6 @@ For new features, improvements or bugs (in real or virtual hardware) fill an iss
 
 * Autodetect UEFI or BIOS
 * Autodetect HDD or SSD (with periodic TRIM for SSD storage)
-* Autodetect VirtualBox for install guest utils
 * Optional erase and format disk (ext4, btrfs (no swap), xfs)
 * Optional _root_ partition encrypt with LUKS
 * Optional file swap
@@ -37,6 +36,15 @@ Start the system with Arch Linux installation media and execute this commands:
 ```bash
 loadkeys [keymap]
 
+# If you have 4K monitor
+# setfont latarcyrheb-sun32
+
+# If you want set custom disk format
+# parted, pvcreate, vgcreate, lvcreate, mkfs.vfat, mkfs.ext4, ...
+
+# If you use WiFi
+# wifi-menu -o
+
 wget https://raw.githubusercontent.com/aramcap/alis/master/download.sh
 
 bash download.sh
@@ -44,7 +52,7 @@ bash download.sh
 
 In ViM editor you can customize your installation. When you save and exit, the install will start immediately.
 
-The install log is save in same directory that installer, but when the computer will be rebooted the log file will moved to `/var/log/alis.log`.
+The install log is save in same directory that installer, but when the computer will be rebooted the log file will moved to `/root/alis.log`.
 
 
 ### Arch Linux Installation Media
